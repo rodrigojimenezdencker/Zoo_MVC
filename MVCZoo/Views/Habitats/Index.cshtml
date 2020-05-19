@@ -1,0 +1,54 @@
+﻿@model IEnumerable<MVCZoo.Models.Habitat>
+
+@{
+    string Pagina = "Hábitats";
+    ViewData["Title"] = Pagina;
+}
+
+<h1 class="text-center">@Pagina</h1>
+
+<p>
+    <a class="btn btn-success shadow" asp-action="Create"><i class="fas fa-plus"></i> <strong>Crear nuevo</strong></a>
+</p>
+<table class="table table-striped">
+    <thead class="thead-dark">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Clima)
+            </th>
+            <th>
+                Vegetación
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Itinerario)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Clima)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Vegetacion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Itinerario.Codigo)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-primary">Editar</a> |
+                <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-secondary">Detalles</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Borrar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

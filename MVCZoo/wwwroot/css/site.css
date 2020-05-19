@@ -1,0 +1,65 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+
+a.navbar-brand {
+  white-space: normal;
+  text-align: center;
+  word-break: break-all;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  font-size: 14px;
+}
+body {
+    background-image: url(../img/zoo.jpg);
+    background-size: 150%;
+    background-repeat: no-repeat;
+}
+
+.navbar-nav .nav-item .nav-link {
+    color: white;
+}
+
+.wrapper {
+    background-color: rgba(224,242,241,0.9);
+    width: 85%;
+    margin: auto;
+    padding-top: 20px;
+    box-sizing: border-box;
+    min-height: 85vh;
+    border-radius: 20px;
+    box-shadow: 3px 3px 15px, 4px 2px 10px black;
+}
+footer{
+    background-color: white;
+}
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.border-top {
+  border-top: 1px solid #e5e5e5;
+}
+.border-bottom {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow {
+  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+button.accept-policy {
+  font-size: 1rem;
+  line-height: inherit;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}

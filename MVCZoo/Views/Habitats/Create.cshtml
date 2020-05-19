@@ -1,0 +1,47 @@
+﻿@model MVCZoo.Models.Habitat
+
+@{
+
+    string Pagina = "Crear nuevo hábitat";
+    ViewData["Title"] = Pagina;
+}
+
+<h1 class="text-center">@Pagina</h1>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Nombre" class="control-label"></label>
+                <input asp-for="Nombre" class="form-control" />
+                <span asp-validation-for="Nombre" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Clima" class="control-label"></label>
+                <input asp-for="Clima" class="form-control" />
+                <span asp-validation-for="Clima" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Vegetacion" class="control-label">Vegetación</label>
+                <input asp-for="Vegetacion" class="form-control" />
+                <span asp-validation-for="Vegetacion" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ItinerarioId" class="control-label">Itinerario</label>
+                <select asp-for="ItinerarioId" class ="form-control" asp-items="ViewBag.ItinerarioId"></select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Crear" class="btn btn-success" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a class="btn bg-secondary text-white" asp-action="Index">Volver a la lista</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

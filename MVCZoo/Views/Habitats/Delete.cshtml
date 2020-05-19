@@ -1,0 +1,42 @@
+﻿@model MVCZoo.Models.Habitat
+
+@{
+    ViewData["Title"] = "Eliminar hábitat";
+}
+<h3>¿Confirma que desea eliminar este hábitat?</h3>
+<div>
+    <h4>Hábitat</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Clima)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Clima)
+        </dd>
+        <dt class="col-sm-2">
+            Vegetación
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Vegetacion)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Itinerario)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Itinerario.Id)
+        </dd>
+    </dl>
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Eliminar" class="btn btn-danger" /> |
+        <a class="btn btn-primary" asp-action="Index">Volver a la lista</a>
+    </form>
+</div>

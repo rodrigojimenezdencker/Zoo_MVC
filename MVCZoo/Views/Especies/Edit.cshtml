@@ -1,0 +1,48 @@
+﻿@model MVCZoo.Models.Especie
+
+@{
+    string Pagina = "Editar";
+    ViewData["Title"] = Pagina;
+}
+
+<h1 class="text-center">@Pagina especie</h1>
+<hr />
+<div class="row">
+    <div class="col-md-4 m-auto">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="Foto" class="control-label"></label>
+                <input asp-for="Foto" class="form-control" />
+                <span asp-validation-for="Foto" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Nombre_Comun" class="control-label">Nombre común</label>
+                <input asp-for="Nombre_Comun" class="form-control" />
+                <span asp-validation-for="Nombre_Comun" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Nombre_Cientifico" class="control-label">Nombre científico</label>
+                <input asp-for="Nombre_Cientifico" class="form-control" />
+                <span asp-validation-for="Nombre_Cientifico" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Descripcion" class="control-label">Descripción</label>
+                <input asp-for="Descripcion" class="form-control" />
+                <span asp-validation-for="Descripcion" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Guardar" class="btn btn-success" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index" class="btn-primary btn">Volver a la lista</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

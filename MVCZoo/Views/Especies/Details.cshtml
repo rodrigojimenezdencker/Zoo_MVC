@@ -1,0 +1,76 @@
+﻿@model MVCZoo.Models.Especie
+
+@{
+    string Pagina = "Detalles";
+    ViewData["Title"] = Pagina; 
+}
+
+<h1 class="text-center">@Pagina</h1>
+
+<div>
+    <h4>Especie</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Foto)
+        </dt>
+        <dd class="col-sm-10">
+            <img width="200" height="200" src="~/img/@Model.Foto" alt="@Model.Foto" />
+        </dd>
+        <dt class="col-sm-2">
+            Nombre común
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Nombre_Comun)
+        </dd>
+        <dt class="col-sm-2">
+            Nombre científico
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Nombre_Cientifico)
+        </dd>
+        <dt class="col-sm-2">
+            Descripción
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Descripcion)
+        </dd>
+    </dl>
+</div>
+<h2>Hábitats de @Model.Nombre_Comun:</h2>
+
+@if (Model.Viven.Count == 0)
+{
+    <p class="text-danger">@Model.Nombre_Comun no tiene ningún hábitat asignado.</p>
+}
+<ul>
+    @foreach (var c in Model.Viven)
+    {
+        <li class="list-group-item"><a asp-controller="Habitats" asp-action="Details" asp-route-id ="@c.HabitatId">@c.Habitat.Nombre - Índice: @c.Indice</a></li>
+    }
+</ul> 
+<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+    Añadir hábitat
+</button>
+<div class="collapse" id="collapseExample">
+
+    <form asp-action="AddHabitat" asp-route-id="@Model.Id" method="post">
+
+        <div class="form-group">
+            <label class="control-label">Hábitat:</label>
+            <select name="HabitatId" class="form-control" asp-items="ViewBag.HabitatId"></select>
+        </div>
+        <div class="form-group">
+            <label class="control-label">Índice:</label>
+            <input type="text" name="Indice" class="form-control">
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Añadir" class="btn btn-default bg-success text-white" />
+        </div>
+    </form>
+</div>
+<hr />
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn-primary btn">Editar</a> |
+    <a asp-action="Index" class="btn btn-secondary">Volver a la lista</a>
+</div>

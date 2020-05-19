@@ -1,0 +1,57 @@
+﻿@model MVCZoo.Models.Itinerario
+
+@{
+    string Pagina = "Detalles";
+    ViewData["Title"] = Pagina;
+}
+
+<h1 class="text-center">@Pagina</h1>
+
+<div>
+    <h4>Itinerario</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Codigo)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Codigo)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Visitantes)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Visitantes)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Duracion)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Duracion)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Longitud)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Longitud)
+        </dd>
+    </dl>
+</div>
+<div>
+    <h2>Hábitats en los que se practica este itinerario: </h2>
+    @if (Model.Habitats.Count == 0)
+    {
+        <p class="text-danger">Ningún hábitat tiene asignado este itinerario.</p>
+    }
+    <ul class="list-group">
+        @foreach (var c in Model.Habitats)
+        {
+            <li class="list-group-item"><a asp-controller="Habitats" asp-action="Details" asp-route-id="@c.Id">@c.Nombre</a></li>
+        }
+    </ul>
+</div>
+<hr />
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn-primary btn">Editar</a> |
+    <a asp-action="Index" class="btn btn-secondary">Volver a la lista</a>
+</div>

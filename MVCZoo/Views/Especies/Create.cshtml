@@ -1,0 +1,47 @@
+﻿@model MVCZoo.Models.Especie
+
+@{
+    string Pagina = "Crear nueva especie";
+    ViewData["Title"] = Pagina;
+}
+
+<h1 class="text-center">@Pagina</h1>
+<hr />
+<div class="row">
+    <div class="col-md-4 m-auto">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Foto" class="control-label"></label>
+                <input asp-for="Foto" class="form-control" />
+                <span asp-validation-for="Foto" class="text-danger">Formato sugerido: nombreanimal.jpg</span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Nombre_Comun" class="control-label">Nombre común</label>
+                <input asp-for="Nombre_Comun" class="form-control" />
+                <span asp-validation-for="Nombre_Comun" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Nombre_Cientifico" class="control-label">Nombre científico</label>
+                <input asp-for="Nombre_Cientifico" class="form-control" />
+                <span asp-validation-for="Nombre_Cientifico" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Descripcion" class="control-label">Descripción</label>
+                <textarea rows="4" cols="50" asp-for="Descripcion" class="form-control"></textarea>
+                <span asp-validation-for="Descripcion" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Crear" class="btn btn-success" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a class="btn bg-secondary text-white" asp-action="Index">Volver a la lista</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
